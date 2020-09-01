@@ -25,12 +25,19 @@
 		3804343D23747354004BAB52 /* Microbolus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804343C23747354004BAB52 /* Microbolus.swift */; };
 		3804343E237474AE004BAB52 /* Microbolus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804343C23747354004BAB52 /* Microbolus.swift */; };
 		3809602323AA759600F98EE6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3809602223AA759600F98EE6 /* Settings.bundle */; };
+		385228E924B3428C00077319 /* BubbleClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385228E724B3428C00077319 /* BubbleClient.framework */; };
+		385228EB24B3428C00077319 /* BubbleClientUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385228E824B3428C00077319 /* BubbleClientUI.framework */; };
 		3858986B235E0DE200919FD4 /* NightscoutAPIClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38589861235E0A4200919FD4 /* NightscoutAPIClient.framework */; };
 		3858986D235E0DEA00919FD4 /* NightscoutAPIClientUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38589864235E0A4C00919FD4 /* NightscoutAPIClientUI.framework */; };
 		38B66F6B23C4A1F2009594BB /* TempBasalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B66F6A23C4A1F2009594BB /* TempBasalView.swift */; };
 		38B66F6D23C4A6D1009594BB /* TempBasalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B66F6C23C4A6D1009594BB /* TempBasalViewController.swift */; };
 		38BE6D8D236C8A110074CF11 /* MicrobolusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE6D8C236C8A110074CF11 /* MicrobolusViewController.swift */; };
 		38CE2218236B134F00DFE990 /* MicrobolusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE2217236B134F00DFE990 /* MicrobolusView.swift */; };
+		38D82E0B2490F37600B4A509 /* FreeAPSSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D82E0A2490F37600B4A509 /* FreeAPSSettingsView.swift */; };
+		38D82E0D2490F3A600B4A509 /* FreeAPSSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D82E0C2490F3A600B4A509 /* FreeAPSSettingsViewModel.swift */; };
+		38D82E0F2490F45C00B4A509 /* FreeAPSSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D82E0E2490F45C00B4A509 /* FreeAPSSettings.swift */; };
+		38D82E102490F5B400B4A509 /* FreeAPSSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D82E0E2490F45C00B4A509 /* FreeAPSSettings.swift */; };
+		38D82E122491002E00B4A509 /* FreeAPSSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D82E112491002E00B4A509 /* FreeAPSSettingsViewController.swift */; };
 		38DAF6F223D7203500A3E9E3 /* MicrobolusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DAF6F123D7203500A3E9E3 /* MicrobolusViewModel.swift */; };
 		38DB1DC2240147BD00AA9A02 /* ImportExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB1DC1240147BD00AA9A02 /* ImportExportManager.swift */; };
 		43027F0F1DFE0EC900C51989 /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F526D5E1DF2459000A04910 /* HKUnit.swift */; };
@@ -586,12 +593,31 @@
 /* Begin PBXFileReference section */
 		3804343C23747354004BAB52 /* Microbolus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microbolus.swift; sourceTree = "<group>"; };
 		3809602223AA759600F98EE6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		385228E724B3428C00077319 /* BubbleClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BubbleClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		385228E824B3428C00077319 /* BubbleClientUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BubbleClientUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38589861235E0A4200919FD4 /* NightscoutAPIClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NightscoutAPIClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38589864235E0A4C00919FD4 /* NightscoutAPIClientUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NightscoutAPIClientUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3885096524F284E00054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Intents.strings; sourceTree = "<group>"; };
+		3885096724F284E00054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		3885096824F284E10054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		3885096924F284E10054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Interface.strings; sourceTree = "<group>"; };
+		3885096A24F284E10054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		3885096B24F284E10054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		3885096C24F284E50054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3885096E24F284E70054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3885096F24F284E80054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ckcomplication.strings; sourceTree = "<group>"; };
+		3885097024F284E80054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3885097124F284EB0054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3885097224F284F70054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3885097324F285DD0054E2A9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		38B66F6A23C4A1F2009594BB /* TempBasalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempBasalView.swift; sourceTree = "<group>"; };
 		38B66F6C23C4A6D1009594BB /* TempBasalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempBasalViewController.swift; sourceTree = "<group>"; };
 		38BE6D8C236C8A110074CF11 /* MicrobolusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrobolusViewController.swift; sourceTree = "<group>"; };
 		38CE2217236B134F00DFE990 /* MicrobolusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrobolusView.swift; sourceTree = "<group>"; };
+		38D82E0A2490F37600B4A509 /* FreeAPSSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeAPSSettingsView.swift; sourceTree = "<group>"; };
+		38D82E0C2490F3A600B4A509 /* FreeAPSSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeAPSSettingsViewModel.swift; sourceTree = "<group>"; };
+		38D82E0E2490F45C00B4A509 /* FreeAPSSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeAPSSettings.swift; sourceTree = "<group>"; };
+		38D82E112491002E00B4A509 /* FreeAPSSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeAPSSettingsViewController.swift; sourceTree = "<group>"; };
 		38DAF6F123D7203500A3E9E3 /* MicrobolusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrobolusViewModel.swift; sourceTree = "<group>"; };
 		38DB1DC1240147BD00AA9A02 /* ImportExportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportManager.swift; sourceTree = "<group>"; };
 		4302F4E01D4E9C8900F0FCAF /* TextFieldTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewController.swift; sourceTree = "<group>"; };
@@ -1051,6 +1077,8 @@
 				43F5C2C91B929C09003EB13D /* HealthKit.framework in Frameworks */,
 				43D9FFD621EAE05D00AF44BF /* LoopCore.framework in Frameworks */,
 				43F78D4F1C914197002152D1 /* LoopKit.framework in Frameworks */,
+				385228EB24B3428C00077319 /* BubbleClientUI.framework in Frameworks */,
+				385228E924B3428C00077319 /* BubbleClient.framework in Frameworks */,
 				892A5D5B222F0D7C008961AB /* LoopTestingKit.framework in Frameworks */,
 				4F7528941DFE1E9500C322D6 /* LoopUI.framework in Frameworks */,
 				C1E2774822433D7A00354103 /* MKRingProgressView.framework in Frameworks */,
@@ -1151,6 +1179,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38D82E092490F2DF00B4A509 /* FreeAPS */ = {
+			isa = PBXGroup;
+			children = (
+				38D82E0A2490F37600B4A509 /* FreeAPSSettingsView.swift */,
+				38D82E0C2490F3A600B4A509 /* FreeAPSSettingsViewModel.swift */,
+			);
+			path = FreeAPS;
+			sourceTree = "<group>";
+		};
 		38DAF6F023D71FFE00A3E9E3 /* Microboluses */ = {
 			isa = PBXGroup;
 			children = (
@@ -1467,6 +1504,7 @@
 				43D9FFD121EAE05D00AF44BF /* LoopCore.h */,
 				43D9FFD221EAE05D00AF44BF /* Info.plist */,
 				3804343C23747354004BAB52 /* Microbolus.swift */,
+				38D82E0E2490F45C00B4A509 /* FreeAPSSettings.swift */,
 			);
 			path = LoopCore;
 			sourceTree = "<group>";
@@ -1555,6 +1593,7 @@
 				89CA2B31226C18B8004D9350 /* TestingScenariosTableViewController.swift */,
 				38BE6D8C236C8A110074CF11 /* MicrobolusViewController.swift */,
 				38B66F6C23C4A6D1009594BB /* TempBasalViewController.swift */,
+				38D82E112491002E00B4A509 /* FreeAPSSettingsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1577,6 +1616,7 @@
 				38B66F6A23C4A1F2009594BB /* TempBasalView.swift */,
 				C1F8B1DB223862D500DD66CF /* BolusProgressTableViewCell.xib */,
 				38DAF6F023D71FFE00A3E9E3 /* Microboluses */,
+				38D82E092490F2DF00B4A509 /* FreeAPS */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1795,6 +1835,8 @@
 		968DCD53F724DE56FFE51920 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				385228E724B3428C00077319 /* BubbleClient.framework */,
+				385228E824B3428C00077319 /* BubbleClientUI.framework */,
 				38589864235E0A4C00919FD4 /* NightscoutAPIClientUI.framework */,
 				38589861235E0A4200919FD4 /* NightscoutAPIClient.framework */,
 				434FB6451D68F1CD007B9C70 /* Amplitude.framework */,
@@ -2209,6 +2251,7 @@
 				pl,
 				ru,
 				fi,
+				sv,
 			);
 			mainGroup = 43776F831B8022E90074EA36;
 			productRefGroup = 43776F8D1B8022E90074EA36 /* Products */;
@@ -2424,6 +2467,8 @@
 				"$(BUILT_PRODUCTS_DIR)/MKRingProgressView.framework/MKRingProgressView",
 				"$(BUILT_PRODUCTS_DIR)/NightscoutAPIClient.framework/NightscoutAPIClient",
 				"$(BUILT_PRODUCTS_DIR)/NightscoutAPIClientUI.framework/NightscoutAPIClientUI",
+				"$(BUILT_PRODUCTS_DIR)/BubbleClient.framework/BubbleClient",
+				"$(BUILT_PRODUCTS_DIR)/BubbleClientUI.framework/BubbleClientUI",
 			);
 			name = "Copy Frameworks with Carthage";
 			outputPaths = (
@@ -2444,6 +2489,8 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MKRingProgressView.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NightscoutAPIClient.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NightscoutAPIClientUI.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BubbleClient.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BubbleClientUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2618,6 +2665,7 @@
 				43C0944A1CACCC73001F6403 /* NotificationManager.swift in Sources */,
 				43D9003321EB258C00AF44BF /* InsulinModelSettings+Loop.swift in Sources */,
 				434FF1EE1CF27EEF000DB779 /* UITableViewCell.swift in Sources */,
+				38D82E0D2490F3A600B4A509 /* FreeAPSSettingsViewModel.swift in Sources */,
 				439BED2A1E76093C00B0AED5 /* CGMManager.swift in Sources */,
 				38DAF6F223D7203500A3E9E3 /* MicrobolusViewModel.swift in Sources */,
 				C18C8C511D5A351900E043FB /* NightscoutDataManager.swift in Sources */,
@@ -2630,6 +2678,7 @@
 				4FB76FBB1E8C42CF00B39636 /* UIColor.swift in Sources */,
 				38B66F6D23C4A6D1009594BB /* TempBasalViewController.swift in Sources */,
 				4374B5EF209D84BF00D17AA8 /* OSLog.swift in Sources */,
+				38D82E0B2490F37600B4A509 /* FreeAPSSettingsView.swift in Sources */,
 				4F6663941E905FD2009E74FC /* ChartColorPalette+Loop.swift in Sources */,
 				4328E0351CFC0AE100E199AA /* WatchDataManager.swift in Sources */,
 				4345E3FC21F04911009E00E5 /* UIColor+HIG.swift in Sources */,
@@ -2653,6 +2702,7 @@
 				C16DA84222E8E112008624C2 /* LoopPlugins.swift in Sources */,
 				430B29952041F5CB00BA9F93 /* LoopSettings+Loop.swift in Sources */,
 				43785E932120A01B0057DED1 /* NewCarbEntryIntent+Loop.swift in Sources */,
+				38D82E122491002E00B4A509 /* FreeAPSSettingsViewController.swift in Sources */,
 				43CEE6E61E56AFD400CB9116 /* NightscoutUploader.swift in Sources */,
 				439A7944211FE22F0041B75F /* NSUserActivity.swift in Sources */,
 				4328E0331CFC091100E199AA /* WatchContext+LoopKit.swift in Sources */,
@@ -2764,6 +2814,7 @@
 				431EA87021EB29120076EC1A /* ExponentialInsulinModelPreset.swift in Sources */,
 				43C05CC721EC2ABC006FB252 /* IdentifiableClass.swift in Sources */,
 				43C05CAE21EB2BBF006FB252 /* NSUserDefaults.swift in Sources */,
+				38D82E102490F5B400B4A509 /* FreeAPSSettings.swift in Sources */,
 				4345E40221F67300009E00E5 /* CarbEntryUserInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2818,6 +2869,7 @@
 				431EA87121EB29120076EC1A /* ExponentialInsulinModelPreset.swift in Sources */,
 				43C05CC821EC2ABC006FB252 /* IdentifiableClass.swift in Sources */,
 				43C05CAD21EB2BBF006FB252 /* NSUserDefaults.swift in Sources */,
+				38D82E0F2490F45C00B4A509 /* FreeAPSSettings.swift in Sources */,
 				4345E40121F67300009E00E5 /* CarbEntryUserInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2991,6 +3043,7 @@
 				7D2366C521250D3F0028B67D /* nl */,
 				7D2366D521250D4A0028B67D /* nb */,
 				7D199D93212A067600241026 /* pl */,
+				3885096724F284E00054E2A9 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -3017,6 +3070,7 @@
 				C12CB9B423106A6100F84978 /* nl */,
 				C12CB9B623106A6200F84978 /* nb */,
 				C12CB9B823106A6300F84978 /* pl */,
+				3885096524F284E00054E2A9 /* sv */,
 			);
 			name = Intents.intentdefinition;
 			sourceTree = "<group>";
@@ -3034,6 +3088,7 @@
 				7D2366C721250D3F0028B67D /* nl */,
 				7D2366D721250D4A0028B67D /* nb */,
 				7D199D95212A067600241026 /* pl */,
+				3885096924F284E10054E2A9 /* sv */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -3042,6 +3097,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				43D9FFA921EA9A0C00AF44BF /* Base */,
+				3885096A24F284E10054E2A9 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -3050,6 +3106,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				43D9FFAE21EA9A0F00AF44BF /* Base */,
+				3885096B24F284E10054E2A9 /* sv */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -3067,6 +3124,7 @@
 				7D2366C621250D3F0028B67D /* nl */,
 				7D2366D621250D4A0028B67D /* nb */,
 				7D199D94212A067600241026 /* pl */,
+				3885096824F284E10054E2A9 /* sv */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -3108,6 +3166,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D23668021250CBE0028B67D /* Base */,
+				3885097024F284E80054E2A9 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3116,6 +3175,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D23668121250CC50028B67D /* Base */,
+				3885096F24F284E80054E2A9 /* sv */,
 			);
 			name = ckcomplication.strings;
 			sourceTree = "<group>";
@@ -3158,6 +3218,7 @@
 				7D2366C921250D400028B67D /* nl */,
 				7D2366D921250D4A0028B67D /* nb */,
 				7D199D97212A067600241026 /* pl */,
+				3885097324F285DD0054E2A9 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3175,6 +3236,7 @@
 				7D2366CA21250D400028B67D /* nl */,
 				7D2366DA21250D4A0028B67D /* nb */,
 				7D199D98212A067600241026 /* pl */,
+				3885096C24F284E50054E2A9 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3226,6 +3288,7 @@
 				7D2366C821250D400028B67D /* nl */,
 				7D2366D821250D4A0028B67D /* nb */,
 				7D199D96212A067600241026 /* pl */,
+				3885097224F284F70054E2A9 /* sv */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -3234,6 +3297,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				80F864E52433BF5D0026EC26 /* fi */,
+				3885097124F284EB0054E2A9 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3251,6 +3315,7 @@
 				7D2366CE21250D400028B67D /* nl */,
 				7D2366DE21250D4B0028B67D /* nb */,
 				7D199D9C212A067700241026 /* pl */,
+				3885096E24F284E70054E2A9 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3306,7 +3371,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: loudnate@gmail.com (XZN842LDLT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 162;
+				CURRENT_PROJECT_VERSION = 172;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -3378,7 +3443,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: loudnate@gmail.com (XZN842LDLT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 162;
+				CURRENT_PROJECT_VERSION = 172;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3560,11 +3625,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 162;
+				CURRENT_PROJECT_VERSION = 172;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 162;
+				DYLIB_CURRENT_VERSION = 172;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/watchOS";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3596,11 +3661,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 162;
+				CURRENT_PROJECT_VERSION = 172;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 162;
+				DYLIB_CURRENT_VERSION = 172;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/watchOS";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3684,11 +3749,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 162;
+				CURRENT_PROJECT_VERSION = 172;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 162;
+				DYLIB_CURRENT_VERSION = 172;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LoopCore/Info.plist;
@@ -3718,11 +3783,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 162;
+				CURRENT_PROJECT_VERSION = 172;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 162;
+				DYLIB_CURRENT_VERSION = 172;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LoopCore/Info.plist;
@@ -3862,11 +3927,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 162;
+				CURRENT_PROJECT_VERSION = 172;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 162;
+				DYLIB_CURRENT_VERSION = 172;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LoopUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -3890,11 +3955,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 162;
+				CURRENT_PROJECT_VERSION = 172;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 162;
+				DYLIB_CURRENT_VERSION = 172;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LoopUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

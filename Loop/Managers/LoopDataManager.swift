@@ -234,6 +234,16 @@ final class LoopDataManager {
 
     fileprivate var carbsOnBoard: CarbValue?
 
+    fileprivate var requiredCarbs: HKQuantity? {
+        didSet {
+            let number = settings.freeAPSSettings.showRequiredCarbsOnAppBadge
+                ? requiredCarbs?.doubleValue(for: .gram()) ?? 0 : 0
+            DispatchQueue.main.async {
+                UIApplication.shared.applicationIconBadgeNumber = Int(number)
+            }
+        }
+    }
+
     var basalDeliveryState: PumpManagerStatus.BasalDeliveryState? {
         get {
             return lockedBasalDeliveryState.value
@@ -423,6 +433,18 @@ extension LoopDataManager {
     /// The insulin sensitivity schedule, applying recent overrides relative to the current moment in time.
     var insulinSensitivityScheduleApplyingOverrideHistory: InsulinSensitivitySchedule? {
         return carbStore.insulinSensitivityScheduleApplyingOverrideHistory
+    }
+
+    /// The carb sensitivity schedule, applying recent overrides relative to the current moment in time.
+    /// This is measured in <blood glucose>/gram
+    var carbSensitivityScheduleApplyingOverrideHistory: CarbSensitivitySchedule? {
+        guard let crSchedule = carbRatioScheduleApplyingOverrideHistory,
+            let isfSchedule = insulinSensitivityScheduleApplyingOverrideHistory
+        else {
+            return nil
+        }
+
+        return .carbSensitivitySchedule(insulinSensitivitySchedule: isfSchedule, carbRatioSchedule: crSchedule)
     }
 
     /// Sets a new time zone for a the schedule-based settings
@@ -897,6 +919,8 @@ extension LoopDataManager {
                 throw error
             }
         }
+
+        updateRequiredCarbs()
     }
 
     private func notify(forChange context: LoopUpdateContext) {
@@ -1342,31 +1366,32 @@ extension LoopDataManager {
         }
 
         guard let glucose = glucoseStore.latestGlucose,
-            let predictedGlucose = predictedGlucose,
-            let unit = glucoseStore.preferredUnit,
-            let glucoseTargetRange = settings.glucoseTargetRangeScheduleApplyingOverrideIfActive
-        else {
+            let unit = glucoseStore.preferredUnit else {
             completion(.canceled(date: startDate, recommended: insulinReq, reason: "Glucose data not found."), nil)
             return
         }
 
-        guard let sensorState = delegate?.sensorState,
-            sensorState.isStateValid || settings.microbolusSettings.enabledWhenSensorStateIsInvalid
-        else {
-            completion(.canceled(date: startDate, recommended: insulinReq, reason: "Possible sensor noise or calibration."), nil)
+        let glucoseValue = glucose.quantity.doubleValue(for: unit)
+        let previousGlucoseValue = latestGlucoseSamples?.suffix(2).first?.quantity.doubleValue(for: unit) ?? glucoseValue
+        let cutoff = HKQuantity(unit: .millimolesPerLiter, doubleValue: 2.5).doubleValue(for: unit)
+
+        let delta = glucoseValue - previousGlucoseValue
+
+        guard delta <= min(glucoseValue * 0.2, cutoff) else {
+            completion(.canceled(date: startDate, recommended: insulinReq, reason: "Glucose delta is too big. Possible sensor noise or calibration."), nil)
             return
         }
 
-        let glucoseBelowRange = predictedGlucose.first { $0.quantity.doubleValue(for: unit) < glucoseTargetRange.value(at: $0.startDate).minValue }
-
-        guard glucoseBelowRange == nil else {
-            let timeFormatter = DateFormatter()
-            timeFormatter.timeStyle = .short
-            completion(.canceled(
-                date: startDate,
-                recommended: insulinReq,
-                reason: "Glucose \(glucoseBelowRange!.quantity) is below target at \(timeFormatter.string(from: glucoseBelowRange!.startDate))"), nil)
-            return
+        if let sensorState = delegate?.sensorState {
+            guard sensorState.isStateValid || settings.microbolusSettings.enabledWhenSensorStateIsInvalid else {
+                completion(.canceled(date: startDate, recommended: insulinReq, reason: "Possible sensor noise or calibration."), nil)
+                return
+            }
+        } else {
+            guard settings.microbolusSettings.enabledWhenSensorStateIsInvalid else {
+                completion(.canceled(date: startDate, recommended: insulinReq, reason: "No sensor state found."), nil)
+                return
+            }
         }
 
         guard checkCOBforMicrobolus() else {
@@ -1402,11 +1427,14 @@ extension LoopDataManager {
         }
 
         switch recommendedBolus.recommendation.notice {
-        case let .some(notice):
-            let notice = "Microbolus canceled by recommendation notice: \(notice.description(using: unit))"
-            completion(.canceled(date: startDate, recommended: insulinReq, reason: notice), nil)
+        case .glucoseBelowSuspendThreshold?:
+            completion(.canceled(date: startDate, recommended: insulinReq, reason: "Glucose below suspend threshold"), nil)
             return
-        case .none: break
+        case .currentGlucoseBelowTarget? where !settings.microbolusSettings.allowWhenGlucoseBelowTarget,
+             .predictedGlucoseBelowTarget? where !settings.microbolusSettings.allowWhenGlucoseBelowTarget:
+            completion(.canceled(date: startDate, recommended: insulinReq, reason: "Glucose below tagret range"), nil)
+            return
+        default: break
         }
 
         let rawBolusUnits = insulinReq * settings.microbolusSettings.partialApplication
@@ -1501,6 +1529,28 @@ extension LoopDataManager {
                 }
             }
         }
+    }
+
+    func updateRequiredCarbs() {
+        dispatchPrecondition(condition: .onQueue(dataAccessQueue))
+        guard
+            let unit = glucoseStore.preferredUnit,
+            let predictedGlucose = self.predictedGlucose?.last,
+            let csfSchedule = carbSensitivityScheduleApplyingOverrideHistory,
+            let glucoseTargetRange = settings.glucoseTargetRangeScheduleApplyingOverrideIfActive
+        else {
+            requiredCarbs = nil
+            return
+        }
+        let delta = glucoseTargetRange.minQuantity(at: predictedGlucose.startDate).doubleValue(for: unit)
+            - predictedGlucose.quantity.doubleValue(for: unit)
+        guard delta > 0 else {
+            requiredCarbs = nil
+            return
+        }
+
+        let now = Date()
+        requiredCarbs = HKQuantity(unit: .gram(), doubleValue: delta / csfSchedule.value(at: now))
     }
 }
 

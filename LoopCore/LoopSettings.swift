@@ -13,6 +13,8 @@ public struct LoopSettings: Equatable {
 
     public var microbolusSettings = Microbolus.Settings()
 
+    public var freeAPSSettings = FreeAPSSettings()
+
     public let dynamicCarbAbsorptionEnabled = true
 
     public static let defaultCarbAbsorptionTimes: CarbStore.DefaultAbsorptionTimes = (fast: .hours(2), medium: .hours(3), slow: .hours(4))
@@ -36,7 +38,7 @@ public struct LoopSettings: Equatable {
     public let retrospectiveCorrectionEnabled = true
 
     /// The interval over which to aggregate changes in glucose for retrospective correction
-    public let retrospectiveCorrectionGroupingInterval = TimeInterval(minutes: 30)
+    public var retrospectiveCorrectionGroupingInterval: TimeInterval { freeAPSSettings.retrospectiveCorrectionGroupingInterval }
 
     /// The amount of time since a given date that input data should be considered valid
     public let inputDataRecencyInterval = TimeInterval(minutes: 15)
@@ -219,6 +221,11 @@ extension LoopSettings: RawRepresentable {
             self.microbolusSettings = microbolusSettings
         }
 
+        if let freeAPSSettingsRaw = rawValue["freeAPSSettings"] as? FreeAPSSettings.RawValue,
+            let freeAPSSettings = FreeAPSSettings(rawValue: freeAPSSettingsRaw) {
+            self.freeAPSSettings = freeAPSSettings
+        }
+
         if let glucoseRangeScheduleRawValue = rawValue["glucoseTargetRangeSchedule"] as? GlucoseRangeSchedule.RawValue {
             self.glucoseTargetRangeSchedule = GlucoseRangeSchedule(rawValue: glucoseRangeScheduleRawValue)
 
@@ -263,7 +270,8 @@ extension LoopSettings: RawRepresentable {
             "version": LoopSettings.version,
             "dosingEnabled": dosingEnabled,
             "overridePresets": overridePresets.map { $0.rawValue },
-            "microbolusSettings": microbolusSettings.rawValue
+            "microbolusSettings": microbolusSettings.rawValue,
+            "freeAPSSettings": freeAPSSettings.rawValue
         ]
 
         raw["glucoseTargetRangeSchedule"] = glucoseTargetRangeSchedule?.rawValue
